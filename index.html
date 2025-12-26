@@ -1,0 +1,30 @@
+<input id="temp1" oninput="szukaj()">
+<input type="checkbox" id="show" onclick="szukaj()">
+<a href="https://servers-frontend.fivem.net/api/servers/single/8rml8v">cwel</a>
+<div id="l"></div>
+
+<script>
+let gowno = [];
+
+async function ktozmienialjsonapowiniendostacgwaltnaswieta() {
+  const d = await (await fetch("https://corsproxy.io/?https://servers-frontend.fivem.net/api/servers/single/8rml8v")).json();
+  gowno = d.Data.players;
+  szukaj();
+}
+
+function szukaj() {
+  let wiadro = "";
+  gowno.forEach(p => {
+    if ((temp1.value && (p.name.toLowerCase().includes(temp1.value.toLowerCase()) || p.id == temp1.value)) || show.checked) 
+      wiadro += `<div>${p.id} ${p.name}</div>`;
+  });
+  l.innerHTML = wiadro;
+}
+
+ktozmienialjsonapowiniendostacgwaltnaswieta();
+</script>
+
+<footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; color: black;"><a target="_blank" href="https://github.com/3kowalek2d" style="text-decoration: none;">  https://github.com/3kowalek2d</a></footer>
+
+      
+    
