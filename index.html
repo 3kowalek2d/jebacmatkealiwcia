@@ -1,5 +1,6 @@
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 <input id="temp1" oninput="szukaj()">
+<p id="liczba"></p>
 <input type="checkbox" id="show" onclick="szukaj()">
 <a href="https://servers-frontend.fivem.net/api/servers/single/8rml8v">cwel</a>
 <div id="l"></div>
@@ -10,10 +11,12 @@ let gowno = [];
 async function ktozmienialjsonapowiniendostacgwaltnaswieta() {
   const d = await (await fetch("https://corsproxy.io/?https://servers-frontend.fivem.net/api/servers/single/8rml8v")).json();
   gowno = d.Data.players;
+  sperma = d.Data.clients;
   szukaj();
 }
 
 function szukaj() {
+  console.log(sperma);
   let wiadro = "";
   gowno.forEach(p => {
     if ((temp1.value && (p.name.toLowerCase().includes(temp1.value.toLowerCase()) || p.id == temp1.value)) || show.checked) 
@@ -29,4 +32,5 @@ ktozmienialjsonapowiniendostacgwaltnaswieta();
 
       
     
+
 
