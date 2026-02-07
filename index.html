@@ -10,7 +10,7 @@ let gowno = [];
 let sperma = 0; 
 
 async function ktozmienialjsonapowiniendostacgwaltnaswieta() {
-  const res = await fetch("https://corsproxy.io/?https://servers-frontend.fivem.net/api/servers/single/8rml8v");
+ const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://servers-frontend.fivem.net/api/servers/single/8rml8v')}`);
   const d = await res.json();
   gowno = d.Data.players || []; 
   sperma = d.Data.clients || 0;
@@ -32,4 +32,5 @@ ktozmienialjsonapowiniendostacgwaltnaswieta();
 
 <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; color: black;"><a target="_blank" href="https://github.com/3kowalek2d" style="text-decoration: none;">  https://github.com/3kowalek2d</a></footer>
 </body>
+
 
