@@ -10,15 +10,24 @@ let gowno = [];
 let sperma = 0; 
 
 async function ktozmienialjsonapowiniendostacgwaltnaswieta() {
- const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://servers-frontend.fivem.net/api/servers/single/8rml8v')}`);
-  const d = await res.json();
-  gowno = d.Data.players || []; 
-  sperma = d.Data.clients || 0;
-  szukaj();
+  const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://servers-frontend.fivem.net/api/servers/single/8rml8v')}`);
+  const data = await res.json();
+  
+
+  const d = JSON.parse(data.contents); 
+
+ 
+  if (d && d.Data) {
+    gowno = d.Data.players || []; 
+    sperma = d.Data.clients || 0;
+    szukaj();
+  }
 }
 
 function szukaj() {
   let wiadro = "";
+  if (!Array.isArray(gowno)) return;
+
   gowno.forEach(p => {
     if ((temp1.value && (p.name.toLowerCase().includes(temp1.value.toLowerCase()) || p.id == temp1.value)) || show.checked) 
       wiadro += `<div>${p.id} ${p.name}</div>`;
@@ -32,5 +41,3 @@ ktozmienialjsonapowiniendostacgwaltnaswieta();
 
 <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; color: black;"><a target="_blank" href="https://github.com/3kowalek2d" style="text-decoration: none;">  https://github.com/3kowalek2d</a></footer>
 </body>
-
-
