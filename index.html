@@ -8,16 +8,17 @@
 
 <script>
 let gowno = [];
+let sperma = 0; 
 
 async function ktozmienialjsonapowiniendostacgwaltnaswieta() {
-  const d = await (await fetch("https://corsproxy.io/?https://servers-frontend.fivem.net/api/servers/single/8rml8v")).json();
-  gowno = d.Data.players;
-  sperma = d.Data.clients;
+  const res = await fetch("https://corsproxy.io/?https://servers-frontend.fivem.net/api/servers/single/8rml8v");
+  const d = await res.json();
+  gowno = d.Data.players || []; 
+  sperma = d.Data.clients || 0;
   szukaj();
 }
 
 function szukaj() {
-  console.log(sperma);
   let wiadro = "";
   gowno.forEach(p => {
     if ((temp1.value && (p.name.toLowerCase().includes(temp1.value.toLowerCase()) || p.id == temp1.value)) || show.checked) 
@@ -32,9 +33,3 @@ ktozmienialjsonapowiniendostacgwaltnaswieta();
 
 <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; color: black;"><a target="_blank" href="https://github.com/3kowalek2d" style="text-decoration: none;">  https://github.com/3kowalek2d</a></footer>
 </body>
-
-
-
-
-
-
